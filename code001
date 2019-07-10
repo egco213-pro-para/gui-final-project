@@ -1,0 +1,67 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+package a;
+
+/**
+ *
+ * @author user
+ */
+public class A extends javax.swing.JFrame {
+
+    private MyImage background;
+    private JLabel  drawpane;
+    private JButton offButton, rideButton;
+    private int frameWidth  = 1366, frameHeight = 768;
+    
+    public A() {
+        this.setTitle("A");
+        this.setBounds(0,0,frameWidth, frameHeight);
+        this.setVisible(true);
+        AddComponents();
+    }
+
+    public static void main(String args[]) {
+       
+        new A().setVisible(true);
+        
+    }
+
+    
+    public void AddComponents()
+{
+        background = new MyImage("pic.jpg").resize(frameWidth, frameHeight);
+        
+        drawpane = new JLabel();
+	drawpane.setIcon(background);
+        drawpane.setLayout(null);
+        
+        
+        rideButton = new JButton("Ride");
+        offButton = new JButton("Get Off");
+        
+        JPanel control  = new JPanel();
+        
+        
+        control.setBounds(0,0,1000,50); 
+        control.add(rideButton); 
+        control.add(offButton);  
+        validate();    
+};
+    
+    class MyImage extends ImageIcon
+{
+    public MyImage(String fname)  { super(fname); }
+    public MyImage(Image image)   { super(image); }
+
+    public MyImage resize(int width, int height)
+    {
+	Image oldimg = this.getImage();
+	Image newimg = oldimg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+	return new MyImage(newimg);
+    }
+};
+                     
+}
+ 
