@@ -1,0 +1,40 @@
+ImageIcon image = new ImageIcon("path & name & extension");
+JLabel imageLabel = new JLabel(image); 
+And after implementing it to my own code, it looks like this (this is only the relevant part):
+
+class Game1 extends JFrame
+{
+    public static Display f = new Display();
+    public Game1()
+    {
+        Game1.f.setSize(1000, 750);
+        Game1.f.setResizable(false);
+        Game1.f.setVisible(true);
+        Game1.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Game1.f.setTitle("Online First Person Shooter");
+
+        ImageIcon image = new ImageIcon("C:\\Users\\Meneer\\Pictures\\image.png");
+        JLabel imageLabel = new JLabel(image); 
+        add(imageLabel);
+        }
+}
+
+class Display extends JFrame
+{
+}
+
+
+
+2
+
+do this after creating Jlabel
+
+imageLabel.setBounds(10, 10, 400, 400);
+imageLabel.setVisible(true);
+also set the layout to JFrame
+
+Game.f.setLayout(new FlowLayout);
+
+
+
+https://stackoverflow.com/questions/20098124/displaying-an-image-in-a-jframe
